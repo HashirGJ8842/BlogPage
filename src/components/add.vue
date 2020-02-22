@@ -1,5 +1,6 @@
 <template>
     <v-container fluid>
+        <div v-if="isPoster">
     <div v-if="display">
     <v-row>
       <v-col cols="6" class="mx-auto">
@@ -23,14 +24,22 @@
       <v-btn text color="primary" v-on:click="display = !display">Edit Blog</v-btn><br/>
       <router-link to="content"><v-btn text color="primary" v-on:click="saveData()">submit</v-btn></router-link>
     </div>
+        </div>
+        <div v-else>
+            <verify v-on:isPoster="update($event)"/>
+        </div>
     </v-container>    
 </template>
 
 <script>
 import { db } from '@/main.js'
+import verify from './verify.vue'
 
 export default {
     name: 'Blog',
+    components: {
+        verify
+    },
     data(){
         return{
             display: true,
@@ -38,7 +47,8 @@ export default {
                 name: null,
                 content: null,
                 title: null
-            }
+            },
+            isPoster: false
         }
     },
     methods: {
@@ -54,6 +64,10 @@ export default {
                 });
             this.display = !this.display;
             alert("Blog Posted")
+        },
+        update(proximity)
+        {
+            this.isPoster = proximity
         }
     }
 }
