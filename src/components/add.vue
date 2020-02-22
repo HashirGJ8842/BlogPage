@@ -17,12 +17,16 @@
     </v-row>
     </div>
     <div v-else>
+        <v-row>
+            <v-col cols="6" class="mx-auto">
       <h1 class="font-weight-regular mx-auto">Blog Preview</h1><br/>
       <h3 class="font-weight-thin">{{ block.title }}</h3>
       <p class="font-weight-light mt-5">{{ block.content }}</p>
       <h4 class="font-weight-normal">{{ block.name }}</h4>
       <v-btn text color="primary" v-on:click="display = !display">Edit Blog</v-btn><br/>
       <router-link to="content"><v-btn text color="primary" v-on:click="saveData()">submit</v-btn></router-link>
+            </v-col>
+        </v-row>
     </div>
         </div>
         <div v-else>

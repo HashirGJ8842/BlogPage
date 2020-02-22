@@ -26,7 +26,7 @@
     methods:{
       check()
       {
-        if(this.email==='hameedhashirniazi@gmail.com'&&this.password==='18723654')
+        if(this.email==='admin@test.com'&&this.password==='admintest')
         {
           alert('Welcome')
           this.$emit('isPoster', true);
